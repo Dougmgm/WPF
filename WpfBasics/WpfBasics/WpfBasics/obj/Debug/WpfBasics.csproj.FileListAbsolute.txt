@@ -1,0 +1,15 @@
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\bin\Debug\WpfBasics.exe.config
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\bin\Debug\WpfBasics.exe
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\bin\Debug\WpfBasics.pdb
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\WpfBasics.csprojAssemblyReference.cache
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\MainWindow.g.cs
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\App.g.cs
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\WpfBasics_MarkupCompile.cache
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\WpfBasics_MarkupCompile.lref
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\MainWindow.baml
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\WpfBasics.g.resources
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\WpfBasics.Properties.Resources.resources
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\WpfBasics.csproj.GenerateResource.cache
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\WpfBasics.csproj.CoreCompileInputs.cache
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\WpfBasics.exe
+C:\Users\douglas.menchon\Desktop\C#\Course\WPF\WpfBasics\WpfBasics\WpfBasics\obj\Debug\WpfBasics.pdb
