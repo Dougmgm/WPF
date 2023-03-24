@@ -13,7 +13,7 @@ namespace WpfTreeView
         #region Constructor
 
         /// <summary>
-        /// Default constructor
+        /// Construtor padrão
         /// </summary>
         public MainWindow()
         {
@@ -22,72 +22,39 @@ namespace WpfTreeView
 
         #endregion
 
-        #region On Loaded
-
-        /// <summary>
-        /// When the application first opens
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            // Get every logical drive on the machine
-            foreach (var drive in Directory.GetLogicalDrives())
-            {
-                // Create a new item for it
-                var item = new TreeViewItem()
-                {
-                    // Set the header
-                    Header = drive,
-                    // And the full path
-                    Tag = drive
-                };
-
-                // Add a dummy item
-                item.Items.Add(null);
-
-                // Listen out for item being expanded
-                item.Expanded += Folder_Expanded;
-
-                // Add it to the main tree-view
-                FolderView.Items.Add(item);
-            }
-        }
-
-        #endregion
 
         #region Folder Expanded
 
         /// <summary>
-        /// When a folder is expanded, find the sub folders/files
+        /// Quando a pasta é expandida, encontrará as sub pastas/arquivos
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Folder_Expanded(object sender, RoutedEventArgs e)
         {
-            #region Initial Checks
+            #region Checkagem inicial
 
             var item = (TreeViewItem)sender;
 
-            // If the item only contains the dummy data
+            // Caso o item contenha apenas dados dummy
             if (item.Items.Count != 1 || item.Items[0] != null)
                 return;
 
-            // Clear dummy data
+            // Limpar dados dummy
             item.Items.Clear();
 
-            // Get full path
+            // Pegar o caminho completo
             var fullPath = (string)item.Tag;
 
             #endregion
 
-            #region Get Folders
+            #region Pegar Pastas
 
-            // Create a blank list for directories
+            // Cria uma lista em branco para diretórios
             var directories = new List<string>();
 
-            // Try and get directories from the folder
-            // ignoring any issues doing so
+            // Tenta pegar diretórios das pastas
+            // ignorando quaisquer problemas ao fazer (não recomendado)
             try
             {
                 var dirs = Directory.GetDirectories(fullPath);
@@ -97,37 +64,37 @@ namespace WpfTreeView
             }
             catch { }
 
-            // For each directory...
+            // Para cada diretório
             directories.ForEach(directoryPath =>
             {
-                // Create directory item
+                // Criar um item do diretório
                 var subItem = new TreeViewItem()
                 {
-                    // Set header as folder name
+                    // Definir o header como nome da pasta
                     Header = GetFileFolderName(directoryPath),
-                    // And tag as full path
+                    // E o tag como o caminho completo
                     Tag = directoryPath
                 };
 
-                // Add dummy item so we can expand folder
+                // Adiciona o item dummy para podermos expandir a pasta
                 subItem.Items.Add(null);
 
-                // Handle expanding
+                // Lida com a expansão 
                 subItem.Expanded += Folder_Expanded;
 
-                // Add this item to the parent
+                // Adiciona o item para o parente
                 item.Items.Add(subItem);
             });
 
             #endregion
 
-            #region Get Files
+            #region Pegar Arquivos
 
-            // Create a blank list for files
+            // Cria uma lista em branco para arquivos
             var files = new List<string>();
 
-            // Try and get files from the folder
-            // ignoring any issues doing so
+            // Tenta pegar os arquivos da pasta
+            // ignorando quaisquer problemas ao fazer
             try
             {
                 var fs = Directory.GetFiles(fullPath);
@@ -137,19 +104,19 @@ namespace WpfTreeView
             }
             catch { }
 
-            // For each file...
+            // Para cada arquivo...
             files.ForEach(filePath =>
             {
-                // Create file item
+                // Create file item Criar um item do arquivo
                 var subItem = new TreeViewItem()
                 {
-                    // Set header as file name
+                    // Define o header como o nome do arquivo
                     Header = GetFileFolderName(filePath),
-                    // And tag as full path
+                    // Define o tag como o nome do caminho
                     Tag = filePath
                 };
 
-                // Add this item to the parent
+                // Adiciona esse item para o parente
                 item.Items.Add(subItem);
             });
 
@@ -158,33 +125,6 @@ namespace WpfTreeView
 
         #endregion
 
-        #region Helpers
-
-        /// <summary>
-        /// Find the file or folder name from a full path
-        /// </summary>
-        /// <param name="path">The full path</param>
-        /// <returns></returns>
-        public static string GetFileFolderName(string path)
-        {
-            // If we have no path, return empty
-            if (string.IsNullOrEmpty(path))
-                return string.Empty;
-
-            // Make all slashes back slashes
-            var normalizedPath = path.Replace('/', '\\');
-
-            // Find the last backslash in the path
-            var lastIndex = normalizedPath.LastIndexOf('\\');
-
-            // If we don't find a backslash, return the path itself
-            if (lastIndex <= 0)
-                return path;
-
-            // Return the name after the last back slash
-            return path.Substring(lastIndex + 1);
-        }
-
-        #endregion
+        
     }
 }

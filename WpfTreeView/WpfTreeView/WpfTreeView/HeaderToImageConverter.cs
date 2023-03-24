@@ -16,20 +16,20 @@ namespace WpfTreeView
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // Get the full path
+            // Get the full path Pega o caminho completo
             var path = (string)value;
 
-            // If the path is null, ignore
+            // Se o caminho for vazio irá ignorar
             if (path == null)
                 return null;
 
-            // Get the name of the file/folder
+            // Pega o nome do arquivo/pasta
             var name = MainWindow.GetFileFolderName(path);
 
-            // By default, we presume an image
+            // Por padrão se presume uma imagem
             var image = "Images/file.png";
 
-            // If the name is blank, we presume it's a drive as we cannot have a blank file or folder name
+            // Se o nome estiver em branco, será presumido que é um disco pois não se tem arquivos ou pastas sem nome 
             if (string.IsNullOrEmpty(name))
                 image = "Images/drive.png";
             else if (new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory))
