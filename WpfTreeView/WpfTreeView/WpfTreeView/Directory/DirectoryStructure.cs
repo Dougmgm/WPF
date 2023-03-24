@@ -15,6 +15,50 @@ namespace WpfTreeView
             // Pegar todos discos lógicos do computador
             return Directory.GetLogicalDrives().Select(drive => new DirectoryItem { FullPath = drive, Type = DirectoryItemType.Drive }).ToList();
         }
+
+        /// <summary>
+        /// Pega os conteudos do topo do diretório
+        /// </summary>
+        /// <param name="fullPath">O caminho completo para o diretório</param>
+        /// <returns></returns>
+        public static List<DirectoryItem> GetDirectoryContents(string fullPath)
+        {
+            // Cria uma lista vazia
+            var items = new List<DirectoryItem>();
+
+            #region Get Folders
+
+            // Tenta pegar os diretórios da pasta
+            // ignorando quaisquer problemas
+            try
+            {
+                var dirs = Directory.GetDirectories(fullPath);
+
+                if (dirs.Length > 0)
+                    items.AddRange(dirs.Select(dir => new DirectoryItem { FullPath = dir, Type = DirectoryItemType.Folder }));
+            }
+            catch { }
+
+            #endregion
+
+            #region Get Files
+
+            // Tenta pegar os diretórios da pasta
+            // ignorando quaisquer problemas
+            try
+            {
+                var fs = Directory.GetFiles(fullPath);
+
+                if (fs.Length > 0)
+                    items.AddRange(fs.Select(file => new DirectoryItem { FullPath = file, Type = DirectoryItemType.File }));
+            }
+            catch { }
+
+            #endregion
+
+            return items;
+        }
+
         #region Helpers
 
         /// <summary>
