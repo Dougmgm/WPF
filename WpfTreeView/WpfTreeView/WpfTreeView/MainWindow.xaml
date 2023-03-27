@@ -8,7 +8,7 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
 
-        <TreeView x:Name="FolderView">
+        <TreeView x:Name="FolderView" ItemsSource="{Binding Items}">
             <TreeView.Resources>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="HeaderTemplate">
